@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 체스 게임</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>♔ AI 체스 게임 ♚</h1>
+        
+        <div class="controls">
+            <div class="difficulty-selector">
+                <label for="difficulty">난이도:</label>
+                <select id="difficulty">
+                    <option value="1">초급 (힌트 표시)</option>
+                    <option value="2">중급</option>
+                    <option value="3" selected>고급</option>
+                    <option value="4">전문가</option>
+                </select>
+            </div>
+            
+            <div class="game-info">
+                <div class="info-item">턴: <span id="turn">백</span></div>
+                <div class="status" id="status">게임 진행 중</div>
+            </div>
+        </div>
+
+        <div class="board-container">
+            <div class="chess-board" id="board"></div>
+        </div>
+
+        <div class="buttons">
+            <button class="new-game-btn" onclick="newGame()">새 게임</button>
+            <button class="undo-btn" onclick="undoMove()" id="undoBtn">무르기</button>
+            <button class="hint-btn" onclick="getHint()" id="hintBtn">힌트</button>
+        </div>
+
+        <div class="captured-pieces">
+            <div class="captured-group">
+                <h3>백이 잡은 말</h3>
+                <div class="captured-list" id="whiteCaptured"></div>
+            </div>
+            <div class="captured-group">
+                <h3>흑이 잡은 말</h3>
+                <div class="captured-list" id="blackCaptured"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 폰 프로모션 모달 -->
+    <div class="promotion-modal" id="promotionModal">
+        <div class="promotion-content">
+            <h2>승급할 말을 선택하세요</h2>
+            <div class="promotion-pieces" id="promotionPieces"></div>
+        </div>
+    </div>
+
+    <!-- JavaScript 파일들 (순서 중요!) -->
+    <script src="moves.js"></script>
+    <script src="validation.js"></script>
+    <script src="actions.js"></script>
+    <script src="ai.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
